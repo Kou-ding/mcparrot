@@ -1,0 +1,8 @@
+{
+    "mcpServers": {
+        "terminal": {
+            "command": "python3",
+            "args": ["servers/terminal/TerminalMCP.py"]
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "mcpServers": {
+        "sqlmap": {
+            "command": "python3",
+            "args": ["servers/sqlmap/SqlmapMCP.py"]
+        },
+        "nmap":{
+            "command": "python3",
+            "args": ["servers/nmap/NmapMCP.py"]
+        },
+        "metasploit": {
+            "command": "python3",
+            "args": ["servers/metasploit/MetasploitMCP.py", "--transport", "stdio"]
+        },
+        "terminal": {
+            "command": "python3",
+            "args": ["servers/terminal/TerminalMCP.py"]
+        }
+    }
+}
