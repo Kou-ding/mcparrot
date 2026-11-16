@@ -1,0 +1,293 @@
+/* SIDE BAR */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    padding: 1.5rem 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-shrink: 0;
+    transition: width 0.3s ease, padding 0.3s ease;
+    position: relative; /* For absolute positioning of toggle button */
+}
+
+/* Scrollbar */
+.sidebar::-webkit-scrollbar { width: 8px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 4px; }
+
+/* Sidebar Header */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Aligns brand left, toggle right */
+    padding: 0 0.75rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    min-height: 64px;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Side bar collapse button */
+.sidebar-toggle {
+    position: relative; /* Changed from absolute */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease, background 0.2s;
+    z-index: 10;
+    flex-shrink: 0; /* Prevents button from shrinking when space is tight */
+}
+
+.sidebar-toggle:hover {
+    background: var(--border-color);
+}
+
+/* Collapsed state */
+.sidebar.collapsed {
+    width: 60px;
+    padding: 1.5rem 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+/* Reposition toggle button when collapsed */
+.sidebar.collapsed .sidebar-toggle {
+    transform: rotate(180deg); /* Flip arrow direction */
+    margin: 0 auto;
+}
+
+/* Hide logo and text when collapsed, but keep the header container visible */
+.sidebar.collapsed .sidebar-brand {
+    display: none;
+}
+
+/* Center the toggle button in the header when collapsed */
+.sidebar.collapsed .sidebar-header {
+    justify-content: center;
+}
+
+/* Hide all direct children of sidebar except the header */
+.sidebar.collapsed > *:not(.sidebar-header) {
+    display: none;
+}
+
+.sidebar-logo {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.sidebar-brand-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* Section titles */
+.sidebar .section-title {
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Section title icon */
+.sidebar .section-title i { color: var(--accent-primary); }
+
+/* Label */
+.sidebar label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.35rem;
+    margin-top: 0.75rem;
+}
+
+/* Subsection title */
+.sidebar .subsection-title {
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+/* Mode Synopsis */
+.sidebar .mode-synopsis {
+    padding-bottom: 1.5rem;
+}
+
+.sidebar .mode-synopsis img{
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+}
+.sidebar .mode-synopsis .tip{
+    font-size: 0.8rem;
+    color: var(--accent-primary);
+    font-style: italic;
+}
+
+/* Pop up new and delete panels */
+.sidebar .delete-panel {
+    background: #d1383835;
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+.sidebar .delete-panel p {
+    font-size: 1rem !important;
+    color: var(--text-primary) !important;
+}
+
+.sidebar .new-panel {
+    background: var(--bg-primary);
+    padding: 0.75rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
+.sidebar .new-panel p {
+    font-size: 1rem !important;
+    color: var(--text-primary) !important;
+}
+
+/* Text input and selects */
+.sidebar select,
+.sidebar input[type="text"] {
+    width: 100%;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+/* Range Slider */
+.sidebar input[type="range"] {
+    width: 100%;
+    margin: 0.75rem 0; /* Adds breathing room above/below */
+    accent-color: var(--accent-primary); /* Colors the filled bar and the thumb! */
+    cursor: pointer;
+}
+
+.sidebar select:focus,
+.sidebar input[type="text"]:focus { border-color: var(--accent-primary); }
+
+.sidebar p {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.35rem;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar p span { color: var(--accent-primary); font-weight: 600; }
+
+/* Reporting toggle switch */
+.sidebar .toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+/* Switch toggle */
+.sidebar .toggle-switch {
+    appearance: none;
+    width: 40px;
+    height: 22px;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Sliding circle */
+.sidebar .toggle-switch::before {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    top: 2px;
+    left: 2px;
+    transition: 0.3s;
+}
+
+/* Checked State */
+.sidebar .toggle-switch:checked {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+}
+
+.sidebar .toggle-switch:checked::before {
+    transform: translateX(18px);
+}
+
+/* Session Controls */
+.session-controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.sidebar .btn {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sidebar .btn i {
+    margin-right: 8px; /* Add some space on the right of the icon */
+}
+
+.sidebar .btn:hover { background: var(--border-color); }
+
+.sidebar .btn-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    padding: 10px 0px; /* Space top/bottom right/left */
+}
+
+.sidebar .btn-container .btn {
+    flex: 1; /* Each button takes equal space */
+}

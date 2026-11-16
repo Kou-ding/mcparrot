@@ -1,0 +1,53 @@
+:root {
+    --trace-rail: #1E2730;
+    --trace-panel: var(--bg-secondary, #10151B);
+    --trace-thinking: #F2A93B;
+    --trace-toolcall: #4C8DFF;
+    --trace-result: #35D18C;
+    --trace-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    /* Background */
+    --bg-primary: #191919;
+    --bg-secondary: #0f0f0f;
+    --bg-tertiary: #191919;
+
+    /* Text */
+    --text-primary: #e6edf3;
+    --text-secondary: #8b949e;
+
+    /* Accent */
+    --accent-primary: #d13838;
+    --accent-secondary: #838282;
+
+    --border-color: #313131;
+    --radius: 6px;
+    --sidebar-width: 320px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    /* padding: 0; */
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, Arial;
+    font-size: 16px;
+    height: 100dvh;
+    overflow: hidden;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased; /* Fixes text rendering artifacts */
+}
+
+.accent-text {
+    color: var(--accent-primary)
+}
+.app-container {
+    display: flex;
+    height: 100dvh;
+    width: 100%;
+}
+
+.hidden { display: none !important; }
