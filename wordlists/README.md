@@ -25,9 +25,6 @@ Total footprint ≈ **1.9 GB**, ~6,500 files, under `/home/kou/Documents/mcparro
 | `Usernames/` | 18 | 87 MB | Username lists for credential guessing |
 | `Web-Shells/` | 61 | 232 KB | Post-exploitation shells (laudanum, FuzzDB, CMS-specific) |
 
-Also available (separate, smaller): `/opt/metasploit/data/wordlists/` — ~70 default-credential
-and service wordlists (`tomcat_mgr_default_userpass.txt`, `unix_passwords.txt`, `wp-plugins.txt`, etc.).
-
 ---
 
 ## 2. Where things live (taxonomy)
