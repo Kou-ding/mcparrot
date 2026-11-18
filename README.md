@@ -26,7 +26,7 @@
 <p align="center">
     <a href="#demo">Demo</a> •
     <a href="#requirements">Requirements</a> •
-    <a href="#quick_start">Quick Start</a> •
+    <a href="#quick-start">Quick Start</a> •
     <a href="#features">Features</a> •
     <a href="#disclaimer">Disclaimer</a> •
     <a href="#docs">Docs</a> •
@@ -130,6 +130,8 @@ uv run app.py
   - **Hashcat**: GPU-accelerated password cracking *(ported to Linux from [MorDavid's Project](https://github.com/MorDavid/Hashcat-MCP))*.
   - **Metasploit**: Comprehensive penetration testing framework *(used as is from [GH05TCREW's Project](https://github.com/GH05TCREW/MetasploitMCP))*.
 - **🎯 Evaluation**: Achieved a **77.4% success rate** on the Cybench Cybersecurity Benchmark and gained root access on **Metasploitable 1 & 2** in a single autonomous pass.
+
+<a id="disclaimer"></a>
 
 ## ⚠️ Disclaimer
 **FOR EDUCATIONAL AND AUTHORIZED TESTING PURPOSES ONLY.**  
