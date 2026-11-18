@@ -72,13 +72,14 @@ conda create --name mcparrot_venv python=3.9
 
 2. Initialize the environment:
 
-> [!NOTE] Compatibility
-> The environment initialization script works on `Arch Linux`, some of its derivatives (`CachyOS`, `BlackArch`, `EndeavourOS`, `Artix`, `Manjaro`) and cybersecurity focused Debian-based systems such as `Kali Linux` and `Parrot OS`.
-
 ```bash
 bash init.sh
 ```
 Make sure to add your deepseek API in *.env*. 
+
+> [!note] 
+> **Compatibility**:
+> The environment initialization script works on `Arch Linux`, some of its derivatives (`CachyOS`, `BlackArch`, `EndeavourOS`, `Artix`, `Manjaro`) and cybersecurity focused Debian-based systems such as `Kali Linux` and `Parrot OS`.
 
 <details>
 <summary> <b>📥 Manual Dependency Installation</b> </summary>
@@ -104,8 +105,10 @@ If your distribution is not supported you can manually install the following dep
 ```bash
 msfrpcd -P kali -a 127.0.0.1 -S -f
 ```
-> [!warning] Security Notice
-> For enhanced security change the password `kali` on both the command and the *.env* file.
+
+> [!warning] 
+> **Security Notice**:
+> For enhanced security change the password (*kali*) on both the service run command and the .env file.
 
 4. Run the app
 ```bash
