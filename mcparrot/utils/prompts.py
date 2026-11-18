@@ -73,10 +73,10 @@ class MyPrompts:
                 - {self.root_dir}/playground/
 
             ### PYTHON VENV
-            There is a python 3.9 conda venv (mcparrot_venv_3_9) for you to use for all your python needs.
+            There is a python conda venv (mcparrot_venv) for you to use for all your python needs.
             A quick tutorial:
                 - activate environment
-                $ conda activate mcparrot_venv_3_9
+                $ conda activate mcparrot_venv
                 - install package while in the active venv:
                 $ conda install numpy
                 - list all environments:
@@ -84,7 +84,7 @@ class MyPrompts:
                 - create a new environment with a different python version:
                 $ conda create --name venv_name python=X.X
             ⚠️ STATELESS TERMINAL: Shell state does not persist between commands. You MUST activate the environment for EVERY Python execution. Always prefix with:
-            $ conda activate mcparrot_venv_3_9 &&
+            $ conda activate mcparrot_venv &&
             🚨 ATTENTION: ONLY USE CONDA FOR YOUR PYTHON NEEDS!
 
             ### LOCAL PACKAGES
@@ -106,6 +106,8 @@ class MyPrompts:
 
     # Normal template
     def normal_system(self, current_session):
+        current_session = current_session.removesuffix('.json')
+
         system_prompt = f"""
         You are a cybersecurity professional.
 
