@@ -246,3 +246,8 @@
 .sidebar .plan-btn strong {
     color: #ffffff;
 }
+
+/* ===== Dropdown ===== */
+.dropdown {
+    color-scheme: dark;
+}
