@@ -148,6 +148,7 @@ function selectStage(){
         const stageName = stages[parseInt(this.value)];
         if (stageSignifier) stageSignifier.textContent = stageName;
         await settings.setSessionInfo('stage', stageName);
+        stageSlider.style.setProperty('--fill', (this.value / 6 * 100) + '%');
     });
 }
 
@@ -160,7 +161,11 @@ function initStage(stage){
     const stageIndex = stages.indexOf(stage);
     const validIndex = stageIndex !== -1 ? stageIndex : 0;
 
-    if (stageSlider) stageSlider.value = validIndex;
+    if (stageSlider) {
+        stageSlider.value = validIndex;
+        // Set the red trail fill on initialization
+        stageSlider.style.setProperty('--fill', (validIndex / 6 * 100) + '%');
+    }
     if (stageSignifier) stageSignifier.textContent = stages[validIndex];
 }
 
