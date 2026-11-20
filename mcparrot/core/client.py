@@ -514,32 +514,38 @@ class MyClient:
 
                 if self.stage == "recon-planning":
                     next_stage = "recon"
-                    config.set_session_info("stage","recon")
+                    config.set_session_info("stage", "recon")
+                    yield {"type": "stage_update", "stage": next_stage}
                     auto_prompt = "Plan approved, proceed."
                 elif self.stage == "recon":
                     next_stage = "va-planning"
-                    config.set_session_info("stage","va-planning")
+                    config.set_session_info("stage", "va-planning")
+                    yield {"type": "stage_update", "stage": next_stage}
                     auto_prompt = "Initialize the vulnerability assessment planning process."
                 elif self.stage == "va-planning":
                     next_stage = "va"
-                    config.set_session_info("stage","va")
+                    config.set_session_info("stage", "va")
+                    yield {"type": "stage_update", "stage": next_stage}
                     auto_prompt = "Plan approved, proceed."
                 elif self.stage == "va":
                     next_stage = "exploit-planning"
-                    config.set_session_info("stage","exploit-planning")
+                    config.set_session_info("stage", "exploit-planning")
+                    yield {"type": "stage_update", "stage": next_stage}
                     auto_prompt = "Initialize the exploitation planning process."
                 elif self.stage == "exploit-planning":
                     next_stage = "exploit"
-                    config.set_session_info("stage","exploit")
+                    config.set_session_info("stage", "exploit")
+                    yield {"type": "stage_update", "stage": next_stage}
                     auto_prompt = "Plan approved, proceed."
                 elif self.stage == "exploit":
                     next_stage = "finale"
-                    config.set_session_info("stage","finale")
+                    config.set_session_info("stage", "finale")
+                    yield {"type": "stage_update", "stage": next_stage}
                     auto_prompt = "Initialize the pentesting summarization process."
-                # Break condition 1: Final stage ended
                 elif self.stage == "finale":
                     next_stage = "recon-planning"
-                    config.set_session_info("stage","recon-planning")
+                    config.set_session_info("stage", "recon-planning")
+                    yield {"type": "stage_update", "stage": next_stage}
                     yield {"type": "done"}
                     break
 

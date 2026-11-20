@@ -5,11 +5,9 @@ const sessions = new Sessions();
 const $ = (id) => document.getElementById(id);
 
 class Chat {
-    constructor(onStreamStart, onStreamEnd) {
+    constructor() {
         this.sending = false;
         this.abortController = null;
-        this.onStreamStart = onStreamStart || (() => {});
-        this.onStreamEnd = onStreamEnd || (() => {});
     }
 
     init() {
@@ -59,7 +57,6 @@ class Chat {
         parrotLogo?.classList.add('hidden');
 
         sessions.addMessage('user', message);
-        this.onStreamStart();
 
         // Initialize AbortController
         this.abortController = new AbortController();
@@ -120,7 +117,6 @@ class Chat {
                 playSound("static/audio/fail.wav");
             }
         } finally {
-            this.onStreamEnd();
             if (textDiv) sessions.finishStreamingMessage(textDiv);
             this.resetUI();
         }
@@ -168,6 +164,9 @@ class Chat {
                 break;
             case 'tool_result':
                 sessions.addToolResult(event.content);
+                break;
+            case 'stage_update':
+                window.dispatchEvent(new CustomEvent('stageUpdated', { detail: { stage: event.stage } }));
                 break;
             case 'error':
                 sessions.addMessage('assistant', `_Error: ${event.message}_`);

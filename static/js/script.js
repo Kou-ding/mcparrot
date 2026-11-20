@@ -8,7 +8,7 @@ const $ = (id) => document.getElementById(id);
 
 const settings = new Settings();
 const sessions = new Sessions();
-const chat = new Chat(startStagePolling, stopStagePolling);
+const chat = new Chat();
 
 document.addEventListener('DOMContentLoaded', async function(){
     // Initialization
@@ -59,25 +59,9 @@ function sessionListener(){
     });
 }
 
-let stagePollingInterval = null;
-function startStagePolling(){
-    if (stagePollingInterval) return; // Prevent multiple intervals
-    // Poll every 10 seconds for stage updates
-    stagePollingInterval = setInterval(async () => {
-        try {
-            const currentStage = await settings.getSessionInfo("stage");
-            if (currentStage) initStage(currentStage);
-        } catch (error) {
-            console.error('Error polling stage:', error);
-        }
-    }, 10000);
-}
-function stopStagePolling(){
-    if (stagePollingInterval) {
-        clearInterval(stagePollingInterval);
-        stagePollingInterval = null;
-    }
-}
+window.addEventListener('stageUpdated', (e) => {
+    initStage(e.detail.stage);
+});
 
 // === Mode ===
 function selectMode(){
