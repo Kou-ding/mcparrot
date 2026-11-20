@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async function(){
     // Await init to ensure dropdown is populated before UI binds
     await sessions.init();
     chat.init();
+    initPlans();
 
     sessionListener();
 
@@ -320,5 +321,62 @@ function deleteSession(){
 
         deleteSessionPanel?.classList.add('hidden');
         // playSound("static/audio/confirm.wav");
+    });
+}
+
+// === Plans ===
+function initPlans() {
+    const planBtns = document.querySelectorAll('.plan-btn');
+    const modal = $('planModal');
+    const modalTitle = $('planModalTitle');
+    const modalContent = $('planModalContent');
+    const closeBtn = $('closePlanModal');
+
+    const planTitles = {
+        'summary': 'Summary',
+        'recon': 'Reconnaissance Plan',
+        'va': 'Vulnerability Assessment Plan',
+        'exploit': 'Exploitation Plan'
+    };
+
+    planBtns.forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const planType = btn.dataset.plan;
+            const session = await settings.getSetting('session');
+
+            if (!session || session === 'None') {
+                alert('Please select or create a session first.');
+                return;
+            }
+
+            modalTitle.textContent = planTitles[planType] || 'Plan';
+            modalContent.innerHTML = '<p>Loading...</p>';
+            modal.classList.remove('hidden');
+
+            try {
+                const response = await fetch(`/get-plan?session=${encodeURIComponent(session)}&type=${planType}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    // marked.js is already included in index.html
+                    modalContent.innerHTML = marked.parse(data.content);
+                } else {
+                    modalContent.innerHTML = `<p class="error" style="color: #ff6b6b;">Error: ${data.error || 'Failed to load plan'}</p>`;
+                }
+            } catch (error) {
+                console.error('Error loading plan:', error);
+                modalContent.innerHTML = '<p class="error" style="color: #ff6b6b;">Failed to load plan. Please try again.</p>';
+            }
+        });
+    });
+
+    closeBtn?.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal?.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
     });
 }
