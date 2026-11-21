@@ -8,7 +8,7 @@ const $ = (id) => document.getElementById(id);
 
 const settings = new Settings();
 const sessions = new Sessions();
-const chat = new Chat(startStagePolling, stopStagePolling);
+const chat = new Chat();
 
 document.addEventListener('DOMContentLoaded', async function(){
     // Initialization
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async function(){
     // Await init to ensure dropdown is populated before UI binds
     await sessions.init();
     chat.init();
+    initPlans();
 
     sessionListener();
 
@@ -58,25 +59,9 @@ function sessionListener(){
     });
 }
 
-let stagePollingInterval = null;
-function startStagePolling(){
-    if (stagePollingInterval) return; // Prevent multiple intervals
-    // Poll every 10 seconds for stage updates
-    stagePollingInterval = setInterval(async () => {
-        try {
-            const currentStage = await settings.getSessionInfo("stage");
-            if (currentStage) initStage(currentStage);
-        } catch (error) {
-            console.error('Error polling stage:', error);
-        }
-    }, 10000);
-}
-function stopStagePolling(){
-    if (stagePollingInterval) {
-        clearInterval(stagePollingInterval);
-        stagePollingInterval = null;
-    }
-}
+window.addEventListener('stageUpdated', (e) => {
+    initStage(e.detail.stage);
+});
 
 // === Mode ===
 function selectMode(){
@@ -147,6 +132,7 @@ function selectStage(){
         const stageName = stages[parseInt(this.value)];
         if (stageSignifier) stageSignifier.textContent = stageName;
         await settings.setSessionInfo('stage', stageName);
+        stageSlider.style.setProperty('--fill', (this.value / 6 * 100) + '%');
     });
 }
 
@@ -159,7 +145,11 @@ function initStage(stage){
     const stageIndex = stages.indexOf(stage);
     const validIndex = stageIndex !== -1 ? stageIndex : 0;
 
-    if (stageSlider) stageSlider.value = validIndex;
+    if (stageSlider) {
+        stageSlider.value = validIndex;
+        // Set the red trail fill on initialization
+        stageSlider.style.setProperty('--fill', (validIndex / 6 * 100) + '%');
+    }
     if (stageSignifier) stageSignifier.textContent = stages[validIndex];
 }
 
@@ -320,5 +310,62 @@ function deleteSession(){
 
         deleteSessionPanel?.classList.add('hidden');
         // playSound("static/audio/confirm.wav");
+    });
+}
+
+// === Plans ===
+function initPlans() {
+    const planBtns = document.querySelectorAll('.plan-btn');
+    const modal = $('planModal');
+    const modalTitle = $('planModalTitle');
+    const modalContent = $('planModalContent');
+    const closeBtn = $('closePlanModal');
+
+    const planTitles = {
+        'summary': 'Summary',
+        'recon': 'Reconnaissance Plan',
+        'va': 'Vulnerability Assessment Plan',
+        'exploit': 'Exploitation Plan'
+    };
+
+    planBtns.forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const planType = btn.dataset.plan;
+            const session = await settings.getSetting('session');
+
+            if (!session || session === 'None') {
+                alert('Please select or create a session first.');
+                return;
+            }
+
+            modalTitle.textContent = planTitles[planType] || 'Plan';
+            modalContent.innerHTML = '<p>Loading...</p>';
+            modal.classList.remove('hidden');
+
+            try {
+                const response = await fetch(`/get-plan?session=${encodeURIComponent(session)}&type=${planType}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    // marked.js is already included in index.html
+                    modalContent.innerHTML = marked.parse(data.content);
+                } else {
+                    modalContent.innerHTML = `<p class="error" style="color: #ff6b6b;">Error: ${data.error || 'Failed to load plan'}</p>`;
+                }
+            } catch (error) {
+                console.error('Error loading plan:', error);
+                modalContent.innerHTML = '<p class="error" style="color: #ff6b6b;">Failed to load plan. Please try again.</p>';
+            }
+        });
+    });
+
+    closeBtn?.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal?.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+        }
     });
 }

@@ -112,10 +112,6 @@ class MyPrompts:
         You are a cybersecurity professional.
 
         To maintain persistent state, you must continuously update the file at `{self.root_dir}/static/plans/{current_session}_plans/summary.md` to log all critical events, decisions, and findings from the current session, utilizing it as a compact, high-density ledger designed to condense and preserve the complete chat context.
-        When to read it:
-            EVERY TIME you receive a prompt.
-        When to write to it:
-            EVERY TIME before you return your final answer.
 
         {self.prompt_police}
         """

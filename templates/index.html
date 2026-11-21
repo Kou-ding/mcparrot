@@ -40,7 +40,7 @@
                     <!-- Synopsis -->
                     <div class="mode-synopsis" id="hawkSynopsis">
                         <div class="section-title">
-                            Hawk Mode <i class="fa-solid fa-crosshairs"></i>
+                             <i class="fa-solid fa-crosshairs"></i> Hawk Mode
                         </div>
                         <img src="static/images/hawk_mode.png" alt="Hawk logo"/>
                         <p>Adaptive pentesting through prompting. Allows for precise targeting and superior control.</p>
@@ -48,7 +48,7 @@
                     </div>
                     <!-- Tools -->
                     <div class="subsection-title">Tool Bundles:</div>
-                    <select id="toolsSelect">
+                    <select class="dropdown" id="toolsSelect">
                         <option>all</option>
                         <option>recon</option>
                         <option>va</option>
@@ -63,7 +63,7 @@
                     <!-- Synopsis -->
                     <div class="mode-synopsis" id="ravenSynopsis">
                         <div class="section-title">
-                            Raven Mode <i class="fa-solid fa-compass"></i>
+                            <i class="fa-solid fa-compass"></i> Raven Mode
                         </div>
                         <img src="static/images/raven_mode.png" alt="Raven logo"/>
                         <p>Thorough infrastructure pentesting. Requires only an IP Address and allows for some degree of control through the following settings. </p>
@@ -90,13 +90,35 @@
                     <p id="reportSignifier"><span class="accent-text">Reporting</span> enabled.</p>
                 </div>
 
+                <!-- Memory -->
+                <div class="section-title">
+                    <i class="fas fa-brain"></i> Memory
+                </div>
+
+                <!-- Summary Button -->
+                <button class="btn plan-btn summary-btn" data-plan="summary" data-tip="Pentesting Summary">
+                    <i class="fas fa-clipboard-list"></i> Summary
+                </button>
+
+                <!-- 3 Plan Buttons -->
+                <div class="btn-container">
+                    <button class="btn plan-btn" data-plan="recon" data-tip="Reconnaissance Plan">
+                        <i class="fas fa-search"></i> <strong>Recon</strong>
+                    </button>
+                    <button class="btn plan-btn" data-plan="va" data-tip="Vulnerability Assessment Plan">
+                        <i class="fas fa-bug"></i> <strong>VA</strong>
+                    </button>
+                    <button class="btn plan-btn" data-plan="exploit" data-tip="Exploitation Plan">
+                        <i class="fas fa-bomb"></i> <strong>Exploit</strong>
+                    </button>
+                </div>
 
                 <!-- Modes -->
                 <div class="section-title">
                     <i class="fa-solid fa-gear"></i> Mode
                 </div>
                 <div id="modePanel">
-                    <select id="modeSelect">
+                    <select class="dropdown" id="modeSelect">
                         <option value="hawk">hawk</option>
                         <option value="raven">raven</option>
                     </select>
@@ -110,7 +132,7 @@
                 <div id="sessionName">
                     <div class="session-controls">
                         <input type="text" id="renameSessionInput" class="hidden" style="flex: 1" placeholder="Enter session name">
-                        <select id="sessionSelect" style="flex: 1"></select>
+                        <select class="dropdown" id="sessionSelect" style="flex: 1"></select>
                         <button id="renameSession" class="btn">
                             <i class="fas fa-edit"></i>
                         </button>
@@ -127,14 +149,15 @@
                 </div>
 
                 <!-- Delete & New Session -->
-                <button id="deleteSessionBtn" class="btn">
-                    <i class="fas fa-trash"></i> Delete Session
-                </button>
+                <div class="btn-container">
+                    <button id="deleteSessionBtn" class="btn">
+                        <i class="fas fa-trash"></i> <strong>Delete Session</strong>
+                    </button>
 
-                <button id="newSessionBtn" class="btn">
-                    <i class="fas fa-plus"></i> New Session
-                </button>
-
+                    <button id="newSessionBtn" class="btn">
+                        <i class="fas fa-plus"></i> <strong>New Session</strong>
+                    </button>
+                </div>
 
                 <!-- New Session -->
                 <div id="newSessionPanel" class="new-panel">
@@ -204,6 +227,20 @@
             <!-- Hidden audio element for notifications -->
             <audio id="notification-audio" preload="auto"></audio>
 
+            <!-- Plan Modal -->
+            <div id="planModal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="planModalTitle">Plan</h2>
+                        <button id="closePlanModal" class="modal-close">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="planModalContent" class="markdown-content">Loading...</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script type="module" src="static/js/script.js"></script>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCParrot | Docs</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="nav-brand">
+            <img src="assets/images/logo.png" alt="MCParrot" class="nav-logo">
+            <span>MCParrot</span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#architecture">Architecture</a></li>
+            <li><a href="#benchmarks">Benchmarks</a></li>
+            <li><a href="logs.html">Logs</a></li>
+            <li><a href="https://github.com/Kou-ding/mcparrot" target="_blank" class="btn-github"><i class="fab fa-github"></i> GitHub</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <span class="badge">Open-Source Penetration Testing Framework</span>
+            <h1>MCParrot</h1>
+            <p class="tagline">A File-Centric Penetration Testing Automation Framework Utilizing Specialized Agents</p>
+            <p class="hero-desc">
+                MCParrot is an open-source penetration testing framework that pairs two operating modes, the targeted Hawk and the autonomous Raven, with blackboard-style memory and an FSM-structured workflow, armed with new and improved cybersecurity MCP servers and proven on realistic scenarios.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://github.com/Kou-ding/mcparrot" target="_blank" class="btn btn-primary"><i class="fab fa-github"></i> View on GitHub</a>
+                <a href="#features" class="btn btn-secondary">Explore Features</a>
+                <a href="logs.html" class="btn btn-tertiary"><i class="fa-solid fa-book-open"></i> View Past Conversations</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">77.4%</div>
+                    <div class="stat-label">Cybench Success Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2</div>
+                    <div class="stat-label">Operating Modes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Custom MCP Servers</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="assets/images/logo.png" alt="MCParrot Logo">
+        </div>
+    </div>
+</section>
+
+<!-- Introduction -->
+<section class="intro section" id="intro">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-bullhorn"></i> Introduction</h2>
+            <p>What is MCParrot and why does it exist?</p>
+        </div>
+        <div class="intro-grid">
+            <div class="intro-card">
+                <h3><i class="fa-solid fa-user-secret"></i> What is Penetration Testing?</h3>
+                <p>
+                    Penetration testing (or pentesting) is the practice of simulating cyber-attacks against information systems
+                    to discover exploitable vulnerabilities. Security professionals follow five distinct stages:
+                </p>
+                <ul class="stage-list">
+                    <li>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span class="stage-name">Reconnaissance</span>
+                        <span class="stage-desc">Gathering target information</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-barcode"></i>
+                        <span class="stage-name">Scanning</span>
+                        <span class="stage-desc">Identifying the attack surface</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-bug"></i>
+                        <span class="stage-name">Vulnerability Assessment</span>
+                        <span class="stage-desc">Identifying potential flaws</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-lock-open"></i>
+                        <span class="stage-name">Exploitation</span>
+                        <span class="stage-desc">Testing if vulnerabilities can be exploited</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-file-lines"></i>
+                        <span class="stage-name">Reporting</span>
+                        <span class="stage-desc">Compiling findings for the client</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="intro-card">
+                <h3><i class="fa-solid fa-circle-exclamation"></i> The Problem</h3>
+                <p class="problem-hook">Can a large language model actually carry a penetration test? Alone, no. An LLM is a brain in a jar.</p>
+                <div class="problem-duo">
+                    <div class="problem-side">
+                        <h4><i class="fa-solid fa-user-secret"></i> Pentesting demands</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-clock"></i> Significant time investment</li>
+                            <li><i class="fa-solid fa-book"></i> Specialized knowledge</li>
+                            <li><i class="fa-solid fa-brain"></i> Years of experience</li>
+                        </ul>
+                    </div>
+                    <div class="problem-side">
+                        <h4><i class="fa-solid fa-robot"></i> LLMs lack</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-screwdriver-wrench"></i> Tools to act</li>
+                            <li><i class="fa-solid fa-book-bookmark"></i> Domain knowledge</li>
+                            <li><i class="fa-solid fa-signs-post"></i> Guidance</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="problem-punch">MCParrot equips LLMs with:</p>
+                <ul class="problem-punch">
+                    <li>Multiple <strong>MCP servers</strong> to act</li>
+                    <li>An <strong>FSM</strong> to plan</li>
+                    <li><strong>System Prompts</strong> to specialize</li>
+                    <li> Structured <strong>memory</strong> to retain important information</li>
+                    <li>Two <strong>modes</strong> to achieve operational granularity</li>
+                </ul>
+                <p class="problem-punch">MCParrot aims to assist pentesting researchers and automate the pentesting process end-to-end.</p>
+            </div>
+        </div>
+        <!-- Demo video -->
+        <div class="demo-video-wrap">
+            <div class="demo-video-header">
+                <span class="demo-dot red"></span>
+                <span class="demo-dot yellow"></span>
+                <span class="demo-dot green"></span>
+                <span class="demo-title"><i class="fa-solid fa-video"></i> mcparrot_demo.mp4 — Hawk mode quick example</span>
+            </div>
+            <video controls preload="metadata">
+                <source src="assets/videos/mcparrot_demo.mp4" type="video/mp4">
+                Your browser does not support embedded video.
+            </video>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features section" id="features">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-star"></i> Core Features</h2>
+            <p>What makes MCParrot a powerful pentesting companion</p>
+        </div>
+
+        <!-- Two Modes -->
+        <div class="modes-grid">
+            <div class="mode-card hawk">
+                <div class="mode-header">
+                    <img src="assets/images/hawk_mode.png" alt="Hawk" class="mode-icon">
+                    <div>
+                        <h3><i class="fa-solid fa-crosshairs"></i> Hawk Mode</h3>
+                        <span class="mode-subtitle">Targeted & Direct</span>
+                    </div>
+                </div>
+                <p class="mode-desc">
+                    Hawk mode is a user-driven, open-ended execution mode. It accepts a <strong>user prompt</strong> and performs
+                    targeted pentesting operations based on user requirements. Best for specific questions, CTF challenges, and
+                    focused exploitation attempts.
+                </p>
+                <ul class="mode-features">
+                    <li><i class="fa-solid fa-check"></i> Direct user prompt input</li>
+                    <li><i class="fa-solid fa-check"></i> MCP servers for tool execution</li>
+                    <li><i class="fa-solid fa-check"></i> Custom system prompt with role-playing</li>
+                    <li><i class="fa-solid fa-check"></i> Python venv for package installation</li>
+                    <li><i class="fa-solid fa-check"></i> No root privileges (simulated attacker constraints)</li>
+                </ul>
+            </div>
+
+            <div class="mode-card raven">
+                <div class="mode-header">
+                    <img src="assets/images/raven_mode.png" alt="Raven" class="mode-icon">
+                    <div>
+                        <h3><i class="fa-solid fa-compass"></i> Raven Mode</h3>
+                        <span class="mode-subtitle">Methodical & Autonomous</span>
+                    </div>
+                </div>
+                <p class="mode-desc">
+                    Raven mode is a fully autonomous, multi-agent orchestration mode. Provide just an <strong>IP address</strong> and
+                    it methodically executes the entire pentest lifecycle: Recon → Vulnerability Assessment → Exploitation.
+                </p>
+                <ul class="mode-features">
+                    <li><i class="fa-solid fa-check"></i> Only requires a target IP</li>
+                    <li><i class="fa-solid fa-check"></i> Multiple specialized agents (Planner, Executor, Curtain Caller)</li>
+                    <li><i class="fa-solid fa-check"></i> Adaptive system prompts per agent</li>
+                    <li><i class="fa-solid fa-check"></i> Automatic context switching</li>
+                    <li><i class="fa-solid fa-check"></i> Dynamic MCP server selection per stage</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Feature Grid -->
+        <div class="feature-grid">
+            <div class="feature-item">
+                <i class="fa-solid fa-sitemap"></i>
+                <h3>FSM Architecture</h3>
+                <p>Structured penetration testing workflow through Recon, Vulnerability Assessment, and Exploitation stages.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-memory"></i>
+                <h3>Blackboard Memory</h3>
+                <p>Memory split across message history, stage plans, and summaries to prevent context window saturation.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-brain"></i>
+                <h3>Native Reasoning</h3>
+                <p>Leverages "thinking" LLMs with native reasoning, surpassing traditional Chain-of-Thought prompting.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-handcuffs"></i>
+                <h3>Jailbreaking</h3>
+                <p>Carefully engineered prompts that bypass standard LLM safety filters for cybersecurity use cases.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-server"></i>
+                <h3>MCP Servers</h3>
+                <p>Custom Model Context Protocol servers for secure, standardized tool integration.</p>
+            </div>
+            <div class="feature-item">
+                <i class="fa-solid fa-flask-vial"></i>
+                <h3>Realistic Evaluation</h3>
+                <p>Tested against real CTF challenges and vulnerable VMs.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Architecture Section -->
+<section class="architecture section" id="architecture">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-pen-ruler"></i> Architecture</h2>
+            <p>How the framework is designed</p>
+        </div>
+
+        <!-- Architecture Diagrams -->
+        <div class="arch-diagrams">
+            <div class="arch-card">
+                <h3><i class="fa-solid fa-crosshairs"></i> Hawk Mode Loop</h3>
+                <img src="assets/images/hawk_loop.png" alt="Hawk Loop Architecture">
+                <p>
+                    The Hawk loop is a direct interaction cycle. The LLM communicates with MCP servers, maintains memory via message history and follows a carefully crafted system prompt.
+                </p>
+            </div>
+            <div class="arch-card">
+                <h3><i class="fa-solid fa-compass"></i> Raven Mode Loop</h3>
+                <img src="assets/images/raven_loop.png" alt="Raven Loop Architecture">
+                <p>
+                    Raven operates in three colored stages:
+                </p>
+                <ul>
+                    <li><span class="color-yellow">Reconnaissance</span>,</li>
+                    <li><span class="color-orange">Vulnerability Assessment</span> and</li>
+                    <li> <span class="color-red">Exploitation</span>.</li>
+                </ul>
+                <p>
+                    Each stage follows:
+                    Plan Generation → Plan Execution & Update → Plan Summary. The cycle can repeat, building on existing plans and summaries.
+                </p>
+            </div>
+            <div class="arch-card">
+                <h3><i class="fa-solid fa-server"></i> MCP Protocol Flow</h3>
+                <img src="assets/images/mcp_loop.png" alt="MCP Protocol">
+                <p>
+                    In both modes, the execution loop terminates only when the LLM yields a text-only response, devoid of any further tool calls. This forms a continuous loop allowing for a surprising amount of automation, even in <strong>Hawk mode</strong>, since the agent can keep probing, exploiting, and adapting via MCP servers until it achieves its goal.
+                </p>
+            </div>
+        </div>
+
+        <!-- MCP Servers Table -->
+        <div class="mcp-section">
+            <h3><i class="fa-solid fa-robot"></i> MCP Servers by Agent Stage</h3>
+            <p>Each Raven agent has access to a tailored set of tools depending on the pentesting stage:</p>
+            <div class="table-responsive">
+                <table class="mcp-table">
+                    <thead>
+                        <tr>
+                            <th>Tool</th>
+                            <th>Recon</th>
+                            <th>Vulnerability Assessment</th>
+                            <th>Exploitation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>nmap</strong> </td><td><i class="fa-solid fa-check green"></i></td><td><i class="fa-solid fa-check green"></i></td><td>—</td></tr>
+                        <tr><td><strong>gobuster</strong> </td><td><i class="fa-solid fa-check green"></i></td><td>—</td><td>—</td></tr>
+                        <tr><td><strong>sqlmap</strong> </td><td>—</td><td><i class="fa-solid fa-check green"></i></td><td><i class="fa-solid fa-check green"></i></td></tr>
+                        <tr><td><strong>metasploit</strong></td><td><i class="fa-solid fa-check green"></i></td><td><i class="fa-solid fa-check green"></i></td><td><i class="fa-solid fa-check green"></i></td></tr>
+                        <tr><td><strong>hashcat</strong></td><td>—</td><td>—</td><td><i class="fa-solid fa-check green"></i></td></tr>
+                        <tr><td><strong>terminal</strong> </td><td><i class="fa-solid fa-check green"></i></td><td><i class="fa-solid fa-check green"></i></td><td><i class="fa-solid fa-check green"></i></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Memory Management -->
+        <div class="memory-section">
+            <h3><i class="fa-solid fa-memory"></i> Blackboard Memory Management</h3>
+            <p>Unlike Hawk mode, where all information lives in message history, Raven mode distributes memory across three locations to prevent context window saturation:</p>
+            <div class="memory-grid">
+                <div class="memory-item">
+                    <i class="fa-solid fa-comments"></i>
+                    <h4>Message History</h4>
+                    <p>Recent conversation turns between the user and agents.</p>
+                </div>
+                <div class="memory-item">
+                    <i class="fa-solid fa-list-ol"></i>
+                    <h4>Stage Plans</h4>
+                    <p>Structured plans for each pentesting stage with step-by-step instructions.</p>
+                </div>
+                <div class="memory-item">
+                    <i class="fa-solid fa-clipboard-list"></i>
+                    <h4>Summary</h4>
+                    <p>Condensed findings from previous cycles, enabling iterative improvement.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benchmarks Section -->
+<section class="benchmarks section" id="benchmarks">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-chart-simple"></i> Benchmarks & Results</h2>
+            <p>How MCParrot performs in real-world scenarios</p>
+        </div>
+
+        <!-- Hawk Mode Benchmark -->
+        <div class="benchmark-card">
+            <div class="benchmark-header">
+                <h3><i class="fa-solid fa-crosshairs"></i> Hawk Mode — Cybench Benchmark</h3>
+                <img src="assets/images/ctf_logo.png" alt="CTF" class="benchmark-logo">
+            </div>
+            <p>Evaluated against the <a href="https://arxiv.org/abs/2408.08926" target="_blank">Cybench Cybersecurity Benchmark</a> (Zhang et al., 2025) — a suite of 40 CTF challenges, of which 31 were available for testing (9 excluded due to missing challenges in the repository).</p>
+
+            <div class="benchmark-stats">
+                <div class="big-stat">
+                    <div class="big-number">77.4%</div>
+                    <div class="big-label">Success Rate (24/31)</div>
+                </div>
+                <div class="big-stat">
+                    <div class="big-number">
+                        <img src="assets/images/deepSeek_logo.png" alt="DeepSeek" class="model-logo">
+                    </div>
+                    <div class="big-label">DeepSeek V4 Pro</div>
+                </div>
+                <div class="big-stat">
+                    <div class="big-number">32K</div>
+                    <div class="big-label">Output Tokens</div>
+                </div>
+            </div>
+
+            <div class="benchmark-breakdown">
+                <h4>Challenge Sources:</h4>
+                <ul>
+                    <li><i class="fa-solid fa-check green"></i> <strong>17</strong> HackTheBox (HTB)</li>
+                    <li><i class="fa-solid fa-check green"></i> <strong>12</strong> Sekai 2022-23</li>
+                    <li><i class="fa-solid fa-check green"></i> <strong>2</strong> HKCert 2022</li>
+                    <li><i class="fa-solid fa-xmark red"></i> <strong>9</strong> Glacier CTF (excluded — missing from repo)</li>
+                </ul>
+            </div>
+
+            <div class="failure-analysis">
+                <h4><i class="fa-solid fa-gauge-simple-high"></i> Analysis of Failures</h4>
+                <div class="failure-grid">
+                    <div class="failure-item">
+                        <i class="fa-solid fa-road-barrier"></i>
+                        <strong>Fixation</strong>
+                        <p>Obsessing over non-productive approaches (main cause)</p>
+                    </div>
+                    <div class="failure-item">
+                        <i class="fa-solid fa-maximize"></i>
+                        <strong>Generic Solutions</strong>
+                        <p>Preference for overly broad approaches that consume too much time and processing power</p>
+                    </div>
+                    <div class="failure-item">
+                        <i class="fa-solid fa-link"></i>
+                        <strong>Chaining Issues</strong>
+                        <p>Difficulty with complex, multi-stage exploits</p>
+                    </div>
+                    <div class="failure-item">
+                        <i class="fa-solid fa-book-atlas"></i>
+                        <strong>Knowledge Gaps</strong>
+                        <p>General cognitive gaps in specific domains</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Raven Mode Benchmark -->
+        <div class="benchmark-card">
+            <div class="benchmark-header">
+                <h3><i class="fa-solid fa-compass"></i> Raven Mode — Vulnerable VMs</h3>
+                <img src="assets/images/metasploit_logo.png" alt="Metasploitable" class="benchmark-logo">
+            </div>
+            <p>Evaluation performed on the well-known Metasploitable 1 and 2 virtual machines — deliberately vulnerable systems extensively used in the pentesting community and academic literature.</p>
+
+            <div class="table-responsive">
+                <table class="vm-table">
+                    <thead>
+                        <tr>
+                            <th>Virtual Machine</th>
+                            <th>Attack Vectors Found</th>
+                            <th>Successfully Exploited</th>
+                            <th>Exploitation Rate</th>
+                            <th>Root Access</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Metasploitable 1</strong></td>
+                            <td>22</td>
+                            <td>6</td>
+                            <td>27.27%</td>
+                            <td><i class="fa-solid fa-check green"></i></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Metasploitable 2</strong></td>
+                            <td>27</td>
+                            <td>12</td>
+                            <td>44.44%</td>
+                            <td><i class="fa-solid fa-check green"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="failure-analysis">
+                <h4><i class="fa-solid fa-gauge-simple-high"></i> Analysis of Failures</h4>
+                <div class="failure-grid">
+                    <div class="failure-item">
+                        <i class="fa-solid fa-road-barrier"></i>
+                        <strong>Fixation</strong>
+                        <p>Obsessing over non-productive approaches (main cause)</p>
+                    </div>
+                    <div class="failure-item">
+                        <i class="fa-solid fa-user-lock"></i>
+                        <strong>Root Requirement</strong>
+                        <p>Some processes require root which is not granted</p>
+                    </div>
+                    <div class="failure-item">
+                        <i class="fa-solid fa-box-open"></i>
+                        <strong>Software Incompatibility</strong>
+                        <p>Old VM software incompatible with current tool versions</p>
+                    </div>
+                    <div class="failure-item">
+                        <i class="fa-solid fa-dice-one"></i>
+                        <strong>Rigid First Pass</strong>
+                        <p>First-cycle plan is inflexible; improves on the second cycle</p>
+                    </div>
+                    <div class="failure-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <strong>Timeouts</strong>
+                        <p>The impossibility of predicting execution time a priori leads to incorrect timeout thresholds.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="benchmark-cta">
+            <h3><i class="fa-solid fa-book-open"></i> View Past Conversations</h3>
+            <p>Browse the actual JSON logs from MCParrot test runs, including Hawk mode CTF solves and Raven mode full pentests.</p>
+            <a href="logs.html" class="btn btn-primary"><i class="fa-solid fa-folder-open"></i> Browse Logs</a>
+        </div>
+    </div>
+</section>
+
+<!-- Conclusion Section -->
+<section class="conclusion section">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-lightbulb"></i> Conclusions & Future Work</h2>
+        </div>
+        <div class="conclusion-grid">
+            <div class="conclusion-card">
+                <h3><i class="fa-solid fa-circle-check"></i> Key Takeaways</h3>
+                <ul  class="conclusions">
+                    <li><i class="fa-solid fa-yin-yang"></i> An architecture that bridges human guidance and full automation</li>
+                    <li><i class="fa-solid fa-puzzle-piece"></i> Demonstrated ability to solve challenging CTF puzzles</li>
+                    <li><i class="fa-solid fa-arrows-to-circle"></i> Comprehensive, multi-faceted pentesting on vulnerable VMs</li>
+                </ul>
+            </div>
+            <div class="conclusion-card">
+                <h3><i class="fa-solid fa-hourglass-half"></i> Future Extensions</h3>
+                <div class="future-cols">
+                    <div>
+                        <h4>Simple</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-book-bookmark"></i> RAG & Knowledge Base</li>
+                            <li><i class="fa-solid fa-file-word"></i> Wordlist Indexing</li>
+                            <li><i class="fa-solid fa-wand-magic-sparkles"></i> Skills System</li>
+                            <li><i class="fa-solid fa-globe"></i> Browser API Tool</li>
+                            <li><i class="fa-solid fa-temperature-quarter"></i> Temperature Tuning</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Complex</h4>
+                        <ul>
+                            <li><i class="fa-solid fa-robot"></i> Agent Swarms with parallel execution</li>
+                            <li><i class="fa-solid fa-share"></i> Inter-agent communication</li>
+                            <li><i class="fa-solid fa-brain"></i> Knowledge Distillation to SLMs</li>
+                            <li><i class="fa-solid fa-computer"></i> Local execution</li>
+                            <li><i class="fa-solid fa-shield-halved"></i> Enhanced privacy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>MCParrot</h4>
+                <p>An open-source, file-centric penetration testing automation framework utilizing specialized LLM-powered agents.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="logs.html">Logs</a></li>
+                    <li><a href="https://github.com/Kou-ding/mcparrot" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Disclaimer</h4>
+                <p class="disclaimer">FOR EDUCATIONAL AND AUTHORIZED TESTING PURPOSES ONLY. Unauthorized use against targets without consent is illegal.</p>
+            </div>
+            <div class="footer-col">
+                <h4>License</h4>
+                <p>Apache 2.0</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MCParrot · Kou-ding</p>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

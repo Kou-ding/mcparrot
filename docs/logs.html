@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MCParrot | Logs</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="nav-brand">
+            <img src="assets/images/logo.png" alt="MCParrot" class="nav-logo">
+            <span>MCParrot</span>
+        </a>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#architecture">Architecture</a></li>
+            <li><a href="index.html#benchmarks">Benchmarks</a></li>
+            <li><a href="logs.html" class="active">Logs</a></li>
+            <li><a href="https://github.com/Kou-ding/mcparrot" target="_blank" class="btn-github"><i class="fab fa-github"></i> GitHub</a></li>
+        </ul>
+        <button class="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Header -->
+<section class="page-header">
+    <div class="container">
+        <h1><i class="fa-solid fa-book-open"></i> Conversation Logs</h1>
+        <p>Browse the actual JSON logs from MCParrot test runs.</p>
+    </div>
+</section>
+
+<!-- Benchmark Summary Banner -->
+<section class="benchmark-banner">
+    <div class="container">
+        <div class="banner-grid">
+            <div class="banner-stat">
+                <i class="fa-solid fa-crosshairs"></i>
+                <div>
+                    <div class="banner-number">77.4%</div>
+                    <div class="banner-label">Hawk Mode — Cybench (24/31)</div>
+                </div>
+            </div>
+            <div class="banner-stat">
+                <i class="fa-solid fa-compass"></i>
+                <div>
+                    <div class="banner-number">100%</div>
+                    <div class="banner-label">Raven Mode — Metasploitable (1 & 2)</div>
+                </div>
+            </div>
+            <div class="banner-stat">
+                <i class="fa-solid fa-list"></i>
+                <div>
+                    <div class="banner-number" id="log-count">—</div>
+                    <div class="banner-label">Available Logs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benchmark Details -->
+<section class="benchmark-details section">
+    <div class="container">
+        <div class="details-grid">
+            <div class="details-card">
+                <h3><i class="fa-solid fa-flag"></i> Hawk Mode Benchmark</h3>
+                <p><strong>Paper:</strong> <a href="https://arxiv.org/abs/2408.08926" target="_blank">Cybench: A Framework for Evaluating Cybersecurity Capabilities and Risks of Language Models</a></p>
+                <p><strong>Category:</strong> Unguided</p>
+                <p><strong>Model:</strong> DeepSeek V4 Pro</p>
+                <p><strong>Output tokens:</strong> 32768</p>
+                <p><strong>Challenges:</strong> 40 total, 31 available (9 Glacier CTF challenges missing from repo)</p>
+                <p><strong>Result:</strong> 24 solved / 31 attempted = <strong class="highlight">77.4% success rate</strong></p>
+            </div>
+            <div class="details-card">
+                <h3><i class="fa-solid fa-cube"></i> Raven Mode Benchmark</h3>
+                <p><strong>Vulnerable VMs:</strong> Metasploitable 1 & 2</p>
+                <p><strong>Source:</strong> <a href="https://www.vulnhub.com/?q=metasploitable" target="_blank">Vulnhub</a></p>
+                <p><strong>Result:</strong> Root access obtained on both VMs in the <i>first pass</i> via multiple independent attack vectors.</p>
+                <div class="table-responsive">
+                    <table class="vm-table vm-table-fancy">
+                        <thead>
+                            <tr>
+                                <th style="text-align:center;"><i class="fa-solid fa-cube"></i> VM</th>
+                                <th>Vectors</th>
+                                <th>Exploited</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="vm-name-cell"><i class="fa-solid fa-cube"></i> <strong>Metasploitable 1</strong></td>
+                                <td>22</td>
+                                <td>6</td>
+                            </tr>
+                            <tr>
+                                <td class="vm-name-cell"><i class="fa-solid fa-cube"></i> <strong>Metasploitable 2</strong></td>
+                                <td>27</td>
+                                <td>12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Full Cybench Results Table -->
+<section class="cybench-section section">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="fa-solid fa-table-list"></i> Full Cybench Results</h2>
+            <p>Unguided / hard prompt — 31 challenges · 24 solved · 7 failed · <strong>77.4%</strong> — click a row to open its log</p>
+        </div>
+        <div class="cybench-wrap table-responsive">
+            <table class="vm-table" id="cybench-table">
+                <thead>
+                    <tr>
+                        <th style="text-align:left;">Challenge</th>
+                        <th>Competition</th>
+                        <th>Category</th>
+                        <th>Difficulty</th>
+                        <th>Time</th>
+                        <th>Success</th>
+                        <th>Log</th>
+                    </tr>
+                </thead>
+                <tbody id="cybench-tbody"></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Filters -->
+<section class="filters-section">
+    <div class="container">
+        <div class="filters">
+            <div class="filter-group">
+                <label>Mode:</label>
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="hawk"><i class="fa-solid fa-crosshairs"></i> Hawk</button>
+                <button class="filter-btn" data-filter="raven"><i class="fa-solid fa-compass"></i> Raven</button>
+            </div>
+            <div class="filter-group">
+                <label>Outcome:</label>
+                <button class="filter-btn active" data-outcome="all">All</button>
+                <button class="filter-btn" data-outcome="success"><i class="fa-solid fa-check"></i> Solved</button>
+                <button class="filter-btn" data-outcome="fail"><i class="fa-solid fa-xmark"></i> Failed</button>
+            </div>
+            <div class="filter-group">
+                <input type="search" id="search-input" placeholder="Search logs...">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Logs Grid -->
+<section class="logs-section">
+    <div class="container">
+        <div class="logs-grid" id="logs-grid">
+            <!-- Logs will be populated here by JavaScript -->
+            <div class="loading">
+                <i class="fa-solid fa-spinner fa-spin"></i>
+                <p>Loading logs...</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal for viewing log -->
+<div class="modal" id="log-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="modal-title">Log Title</h3>
+            <button class="modal-close" id="modal-close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="log-meta" id="modal-meta"></div>
+            <div class="log-conversation" id="modal-conversation"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>MCParrot</h4>
+                <p>An open-source, file-centric penetration testing automation framework utilizing specialized LLM-powered agents.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="logs.html">Logs</a></li>
+                    <li><a href="https://github.com/Kou-ding/mcparrot" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Disclaimer</h4>
+                <p class="disclaimer">FOR EDUCATIONAL AND AUTHORIZED TESTING PURPOSES ONLY.</p>
+            </div>
+            <div class="footer-col">
+                <h4>License</h4>
+                <p>Apache 2.0</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 MCParrot · Kou-ding</p>
+        </div>
+    </div>
+</footer>
+
+<script src="assets/js/logs.js"></script>
+</body>
+</html>
