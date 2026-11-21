@@ -39,7 +39,7 @@
 
 ## 🎬 Demo
 
-![mcparrot demo](static/videos/mcparrot_demo.mp4)
+![mcparrot demo](static/videos/demo.webp)
 
 <a id="requirements"></a>
 
