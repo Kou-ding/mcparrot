@@ -144,7 +144,7 @@ MCParrot is designed for security professionals and researchers to automate pene
 
 ## 📄 Docs
 
-For more information visit the project's site [mcparrot.github.io](mcparrot.github.io)
+For more information visit the [Project's site](https://kou-ding.github.io/mcparrot/)
 
 <a id="license"></a>
 
