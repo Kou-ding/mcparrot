@@ -38,8 +38,8 @@
 <a id="demo"></a>
 
 ## 🎬 Demo
-video soon...
-![mcparrot demo](static/images/demo.png)
+
+![mcparrot demo](static/videos/mcparrot_demo.mp4)
 
 <a id="requirements"></a>
 
